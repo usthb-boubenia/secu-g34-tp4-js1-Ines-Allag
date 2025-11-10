@@ -1,29 +1,30 @@
 "use strict";
 
-// Tableau d'étudiants (slide 40 tableau d'objets)
-const Students = [
-    [1000, 'JOHN', 'DOE', 14, 5],
-    [2000, 'BOB', 'CARLTON', 7, 1],
-    [3000, 'RAYANE', 'SMITH', 13, 3]
+
+// initialisation des type complexes tableau d'objets slide 40
+const students=[
+	{num:1000,prenom:"JOHN",nom:"DOE",note1:14,note2:5},
+	{num:2000,prenom:"BOB",nom:"CARLTON",note1:7,note2:1},
+	{num:3000,prenom:"RAYANE",nom:"SMITH",note1:13,note2:3},
 ];
 
-// Fonction B - Vérifie condition d'admission (slide 45 Les fonctions)
-function B(valeur) { 
-    return valeur >= 10; // Admis si valeur >= 10 (slide 41 les conditions if else , on va l'utiliser plus tard)
+
+//declaration d une fonction avec parametre de type float et return un booleen slide 45
+function admis(note){
+	return note>=10
 }
 
-// Fonction A - Appelle B et affiche résultats (slide 45 Les fonctions + 38 to access elements dans un tableau)
-function deliberation() {
-    Students.forEach(etudiant => {
-        const id = etudiant[0];
-        const valeur = etudiant[3];
-        const admis = B(valeur); // Appel fonction B 
-        
-       // Condition if/else comme slide 42
-        if (admis) {
-            console.log(etudiant[0] + ': ADMIS');
-        } else {
-            console.log(etudiant[0] + ': AJOURNÉ');
-        }
-    });
+//declaration d'une fonction qui appelle une autre function
+function deliberation(){
+	students.forEach(student => {
+		const num=student.num;
+		const note1=student.note1;
+		const note2=student.note2;
+		const moy=(note1+note2)/2+5;
+		//utilisation des conditions slide 42
+		if(admis(moy))
+			console.log(num +": ADMIS");
+		else 
+			console.log(num +": AJOURNÉ");
+	});
 }
